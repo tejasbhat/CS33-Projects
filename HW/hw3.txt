@@ -1,0 +1,24 @@
+void prefix_sum(float a[], float p[], long n) {
+  long i;
+  float val, last_val, temp0, temp1, temp2, temp3;
+  last_val = p[0] = a[0];
+
+  for (i = 1; i < n - 4; i += 4) {
+    temp0 = last_val + a[i];
+    temp1 = temp0 + a[i+1];
+    temp2 = temp1 + a[i+2];
+    temp3 = temp2 + a[i+3];
+
+    p[i]   = temp0;
+    p[i+1] = temp1;
+    p[i+2] = temp2;
+    p[i+3] = temp3;
+
+    last_val += a[i] + a[i+1] + a[i+2] + a[i+3];
+  }
+
+  for (; i < n; i ++) {
+    last_val += a[i];
+    p[i] = last_val;
+  }
+}

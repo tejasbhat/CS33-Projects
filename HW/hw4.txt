@@ -1,0 +1,22 @@
+// Tejas Bhat 
+// UID: 705199445
+
+void transpose(int *dst, int *src, int dim)
+{
+    const int BLOCK_SIZE = 8;
+    int i, j, x, y;
+
+    for (i = 0; i < dim; i += BLOCK_SIZE)
+    {
+        for (j = 0; j < dim; j += BLOCK_SIZE)
+        {
+            for (x = i; x < dim && x < (i + BLOCK); x++)
+            {
+                for (y = j; y < dim && y < (j + BLOCK); y++)
+		{
+                    dst[y * dim + x] = src[x * dim + y];
+		}
+            }
+        }
+    }
+}
